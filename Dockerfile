@@ -1,5 +1,5 @@
 # Step 1: Build frontend
-FROM node:18 as build
+FROM node:20 as build
 
 WORKDIR /app/client
 COPY client/package*.json ./
@@ -10,7 +10,7 @@ RUN npm run build
 
 
 # Step 2: Setup backend
-FROM node:18
+FROM node:20
 
 WORKDIR /app/server
 

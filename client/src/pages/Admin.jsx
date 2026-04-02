@@ -17,7 +17,7 @@ export default function Admin() {
 
   const handleAdd = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/challenges`, {
+      await axios.post(`/api/challenges`, {
         title: form.title, description: form.description,
         type: 'flag', answer: form.answer, options: [],
         points: Number(form.points), round: Number(form.round),
@@ -32,7 +32,7 @@ export default function Admin() {
 
   const handleActivateRound = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/challenges/round/activate`, { roundNumber: Number(roundNum) })
+      await axios.post(`/api/challenges/round/activate`, { roundNumber: Number(roundNum) })
       notify(`✓ Round ${roundNum} is now active`)
     } catch {
       notify('Error activating round', false)
@@ -41,7 +41,7 @@ export default function Admin() {
 
   const handleUnblock = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/anticheat/unblock`, { teamName: unblockTeam })
+      await axios.post(`/api/anticheat/unblock`, { teamName: unblockTeam })
       notify(`✓ ${unblockTeam} has been unblocked`)
       setUnblockTeam('')
     } catch {
@@ -50,7 +50,7 @@ export default function Admin() {
   }
 
   const fetchFlags = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/anticheat`)
+    const res = await axios.get(`/api/anticheat`)
     setFlags(res.data)
     setShowFlags(true)
   }

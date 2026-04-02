@@ -19,7 +19,7 @@ export default function Arena() {
 
   const fetchChallenges = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/challenges`, {
+      const res = await axios.get(`/api/challenges`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       setChallenges(res.data.challenges)
@@ -37,7 +37,7 @@ export default function Arena() {
     if (violationSent.current) return
     violationSent.current = true
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/anticheat/violation`, {},
+      await axios.post(`/api/anticheat/violation`, {},
         { headers: { Authorization: `Bearer ${token}` } }
       )
     } catch (err) {

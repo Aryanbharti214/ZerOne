@@ -9,7 +9,7 @@ export default function Sidebar() {
   const team = JSON.parse(localStorage.getItem('team') || '{}')
 
   const fetchLeaderboard = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaderboard`)
+    const res = await axios.get(`/api/leaderboard`)
     setLeaderboard(res.data)
   }
 

@@ -13,7 +13,7 @@ export default function ChallengeCard({ challenge, solved, onSolved }) {
 
   const fetchHint = async () => {
     const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/challenges/${challenge._id}/hint`,
+      `/api/challenges/${challenge._id}/hint`,
       { headers: { Authorization: `Bearer ${token}` } }
     )
     setHint(res.data.hint)
@@ -24,7 +24,7 @@ export default function ChallengeCard({ challenge, solved, onSolved }) {
     setLoading(true)
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/submissions`,
+        `/api/submissions`,
         { challengeId: challenge._id, answer, hintUsed: !!hint },
         { headers: { Authorization: `Bearer ${token}` } }
       )

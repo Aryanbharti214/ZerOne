@@ -8,7 +8,7 @@ export default function Display() {
   const [time, setTime] = useState(60 * 60)
 
   const fetch = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/leaderboard`)
+    const res = await axios.get(`/api/leaderboard`)
     setLeaderboard(res.data)
   }
 
